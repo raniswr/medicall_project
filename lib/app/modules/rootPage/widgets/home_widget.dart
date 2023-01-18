@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:medicall_project/app/modules/rootPage/controllers/root_page_controller.dart';
 import 'package:medicall_project/app/routes/app_pages.dart';
 import 'package:medicall_project/core/constant/assets.dart';
 import 'package:medicall_project/core/constant/colors.dart';
@@ -233,38 +234,40 @@ class HomeWidget extends StatelessWidget {
                               width: 80,
                               height: 80,
                             ).marginOnly(left: 10),
-                            Padding(
-                              padding: const EdgeInsets.all(15),
-                              child: Column(
-                                children: [
-                                  Text(
-                                    'Dr. Julia Thompson',
-                                    style: AppStyles.styleTextBody18(fontWeight: FontWeight.bold),
-                                  ),
-                                  Text(
-                                    'Therapist',
-                                    style: AppStyles.styleTextBody14(),
-                                  ).marginOnly(right: 120),
-                                  Row(
-                                    children: [
-                                      const AppImage(
-                                        asset: Assets.stars,
-                                        width: 45,
-                                        height: 45,
-                                      ).marginOnly(left: 20),
-                                      Text(
-                                        '115 reviews',
-                                        style: AppStyles.styleTextBody12(colorText: AppColors.grayMedium),
-                                      ).marginOnly(right: 30),
-                                      Text(
-                                        "Rp. 50.0000",
-                                        style: AppStyles.styleTextBody14(),
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            )
+                            GetBuilder<RootPageController>(builder: (controller) {
+                              return Padding(
+                                padding: const EdgeInsets.all(15),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      '${controller.album?.title}',
+                                      style: AppStyles.styleTextBody18(fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      'Therapist',
+                                      style: AppStyles.styleTextBody14(),
+                                    ).marginOnly(right: 120),
+                                    Row(
+                                      children: [
+                                        const AppImage(
+                                          asset: Assets.stars,
+                                          width: 45,
+                                          height: 45,
+                                        ).marginOnly(left: 20),
+                                        Text(
+                                          '115 reviews',
+                                          style: AppStyles.styleTextBody12(colorText: AppColors.grayMedium),
+                                        ).marginOnly(right: 30),
+                                        Text(
+                                          "Rp. 50.0000",
+                                          style: AppStyles.styleTextBody14(),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              );
+                            })
                           ],
                         ),
                       ).marginOnly(left: 10),
